@@ -1,0 +1,115 @@
+site_name: Kiterow's Aegisub Scripts
+site_description: Guía de uso de los scripts de automatización de Kiterow para Aegisub.
+site_author: Kiterow
+site_url: https://kiterowx.github.io/Kite-Aegisub-Scripts-Guide/
+repo_url: https://github.com/Kiterowx/Kite-Aegisub-Scripts-Guide
+repo_name: Código de la guía
+theme:
+  name: material
+  language: es
+  icon:
+    logo: material/script-text-outline
+    repo: fontawesome/brands/github
+  palette:
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    primary: indigo
+    accent: blue
+    toggle:
+      icon: material/weather-night
+      name: Cambiar a modo oscuro
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    primary: indigo
+    accent: light blue
+    toggle:
+      icon: material/weather-sunny
+      name: Cambiar a modo claro
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - navigation.sections
+  - navigation.top
+  - navigation.tracking
+  - navigation.footer
+  - toc.follow
+  - search.suggest
+  - search.highlight
+  - content.code.copy
+plugins:
+- search:
+    lang: es
+- glightbox:
+    touchNavigation: true
+    loop: false
+    effect: zoom
+    slide_effect: slide
+    width: auto
+    height: auto
+    zoomable: true
+    draggable: true
+markdown_extensions:
+- admonition
+- attr_list
+- def_list
+- md_in_html
+- tables
+- toc:
+    permalink: true
+    title: Contenido
+- pymdownx.details
+- pymdownx.highlight:
+    anchor_linenums: true
+- pymdownx.inlinehilite
+- pymdownx.superfences
+extra_css:
+- stylesheets/extra.css
+extra:
+  social:
+  - icon: fontawesome/brands/discord
+    link: https://discord.gg/Egq8us4xZC
+    name: Discord de soporte
+nav:
+- Inicio: index.md
+- Instalación: installation.md
+- Suites:
+  - Chrono Suite: suites/chrono-suite.md
+  - Rhea Signs: suites/rhea-signs.md
+  - Zheus Colormanager: suites/zheus-colormanager.md
+- Scripts:
+  - AddTexture: standard/addtexture.md
+  - Alecto KFX: standard/alecto-kfx.md
+  - Allure: standard/allure.md
+  - AutoBlur: standard/auto-blur.md
+  - AutoMask: standard/automask.md
+  - Cliptomaniac: standard/cliptomaniac.md
+  - Field Group Manager: standard/field-group-manager.md
+  - Gradient Row: standard/gradient-row.md
+  - Macaria Revert: standard/macaria-revert.md
+  - Moka Motion: standard/moka-motion.md
+  - Obake: standard/obake.md
+  - PNG2ASS: standard/png2ass.md
+  - Selesub: standard/selesub.md
+  - Snapshoter: standard/snapshoter.md
+  - Social Clip: standard/social-clip.md
+  - Zagreo Glyphs: standard/zagreo-glyphs.md
+- Lite:
+  - Hotkeys: lite/hotkeys.md
+  - Pointiac: lite/pointiac.md
+  - Wave2json: lite/wave2json.md
+- Módulos:
+  - AssContext: modules/kite-asscontext.md
+  - AssDrawing: modules/kite-assdrawing.md
+  - Color: modules/kite-color.md
+  - Core: modules/kite-core.md
+  - EventOps: modules/kite-eventops.md
+  - LineOps: modules/kite-lineops.md
+  - Media: modules/kite-media.md
+  - PyBridge: modules/kite-pybridge.md
+  - Settings: modules/kite-settings.md
+  - ShapeOptimizer: modules/kite-shapeoptimizer.md
+  - Timing: modules/kite-timing.md
+  - UI: modules/kite-ui.md
