@@ -1,6 +1,6 @@
 # Selesub
 
-Versión **2.1.8**.
+Versión **2.1.9**.
 
 Selesub busca eventos, selecciona o comenta coincidencias, elimina resultados confirmados y transfiere líneas entre archivos ASS.
 
@@ -65,3 +65,7 @@ Quedan seleccionadas las filas de diálogo 1 y 3. El texto y los tiempos permane
 </tbody>
 </table>
 </div>
+
+## Vecinas con el mismo texto
+
+El atajo **`: Kite Hotkeys :/Selesub/Text/Same Text Neighbors`** selecciona el bloque contiguo alrededor de la fila activa. Ignora bloques ASS, distingue mayúsculas, espacios y saltos escritos, e incluye filas comentadas si coinciden. Se detiene en la primera fila distinta o que no sea un evento de diálogo. Conserva la fila activa y no edita líneas.

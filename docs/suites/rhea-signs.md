@@ -1,6 +1,6 @@
 # Rhea Signs
 
-Versión **2.1.4**.
+Versión **2.2.1**.
 
 Rhea Signs reúne edición de carteles, etiquetas, máscaras, perspectiva, fuentes y estilos. Su interfaz admite español, inglés y portugués.
 
@@ -21,7 +21,7 @@ El panel ejecuta **Perspective → Masks → Shapes → Sign → Toolbox**. Deja
 
 Las etiquetas, comentarios y dibujos se conservan; el texto nuevo se reparte entre las secciones existentes. **Detect/regenerate GBC** actualiza los degradados marcados, incluso si no cambia el texto visible.
 
-## Copiar y transformar etiquetas con TagOps
+## Copiar y transformar etiquetas con Tag Editor
 
 <figure class="ui-shot">
   <img src="../../assets/captures/rhea-tagops-02.png" alt="Copy Tags copia categorías; Keep Only retira las demás. En Resize / transform, las casillas alternan categorías respecto a las detectadas." loading="lazy">
@@ -58,7 +58,7 @@ Un `iclip` aporta su contorno, sin convertirlo en el complemento del cuadro. La 
 
 | Shapes | Función |
 | --- | --- |
-| Unify Positions | Comparte un pivote compensando las coordenadas de dibujos estáticos. |
+| Unify Drawing Pivots | Comparte un pivote compensando las coordenadas de dibujos estáticos. |
 | Place on Perimeter | Repite unidades sobre el contorno del primer dibujo. |
 | Shape Color Optimizer | Reduce colores o bandas de dibujos compatibles. |
 
@@ -70,7 +70,7 @@ El optimizador ofrece Auto, Similar colors y Full gradient. Revisa la reducción
 
 Estas distribuciones parten del estado inicial. Divide o convierte antes las líneas cuya geometría cambie durante la animación.
 
-**Fast Signs** genera fondo, brillo y texto en tres capas y comenta las fuentes. El ancho máximo limita la caja; no reduce automáticamente un texto demasiado largo.
+**Sign Builder** genera fondo, brillo y texto en tres capas y comenta las fuentes. El ancho máximo limita la caja; no reduce automáticamente un texto demasiado largo.
 
 ## Estilos y fundidos
 
@@ -81,7 +81,7 @@ Estas distribuciones parten del estado inicial. Divide o convierte antes las lí
   <figcaption>Marca las propiedades que quieras escribir. Keep families already used by the line protege las etiquetas existentes; Omit zero values evita añadir valores cero.</figcaption>
 </figure>
 
-**Fast Fades/In** y **Out** usan el fotograma actual como borde del fundido. **Clean** retira fades interiores entre grupos continuos y conserva los exteriores.
+**Frame Fades and Cleanup/In** y **Out** usan el fotograma actual como borde del fundido. **Clean** retira fades interiores entre grupos continuos y conserva los exteriores.
 
 Instala ASSFoundation, Functional, Aegisub-Motion y arch.Perspective junto con los módulos compartidos.
 
@@ -107,3 +107,11 @@ La línea recibe Arial, tamaño 60, negrita, borde y colores como etiquetas. Su 
 ```ass
 {\fnArial\fs60\b1\bord2\1c&HFFFFFF&\3c&H181818&\4c&H000000&\an5\pos(640,360)}SALIDA
 ```
+
+## Split at Visual Changes y Simplify Drawing
+
+**Tools → Split at Visual Changes** integra el antiguo script suelto. Selecciona una línea, carga vídeo y define una región rectangular; un clip rectangular estático puede servir de guía. Ajusta diferencia de color, porcentaje global y porcentaje por bloque. Revisa los tramos antes de generar. **Conservar animación** reajusta los tiempos de los tags; **Congelar por tramo** evalúa el primer frame de cada tramo. Puede conservar la original comentada y retirar el clip guía. Rechaza karaoke y efectos temporales no compatibles antes de escribir.
+
+**Shapes → Simplify Drawing** reduce puntos sobre rectas y convierte Bézier cúbicas casi rectas en segmentos rectos. La tolerancia predeterminada es **0.05 unidades de dibujo en p1**, antes de escala o perspectiva; **0** elimina solo geometría colineal. Comprueba los puntos y controles originales para limitar el error de cada pasada, conserva extremos, esquinas, retrocesos, contornos separados y curvas con detalle. Los B-splines quedan intactos. Solo modifica secciones de dibujo de las líneas seleccionadas; conserva tags, texto y metadatos. Una tolerancia positiva permite una pequeña diferencia geométrica, que puede ampliarse con la escala. La rasterización de bordes puede variar ligeramente incluso con tolerancia cero.
+
+**Tools → Remove Redundant Zero Tags** limpia únicamente tags cero que no afectan al resultado, respetando estilos, resets y animaciones.

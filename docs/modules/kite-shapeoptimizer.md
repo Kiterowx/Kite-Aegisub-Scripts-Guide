@@ -1,8 +1,8 @@
 # ShapeOptimizer
 
-Versión **1.3.2** · `kite.ShapeOptimizer`
+Versión **1.3.3** · `kite.ShapeOptimizer`
 
-Analiza dibujos estáticos y propone reducciones de colores o bandas de degradado. Rhea Signs lo expone en Shapes → Shape Color Optimizer.
+Analiza dibujos estáticos y propone reducciones de colores o bandas de degradado. Rhea Signs lo expone en Shapes → Shape Color Optimizer. Las salidas conservan los tags necesarios frente al estilo de destino y omiten los que ya se heredan. La geometría permite preparar estas operaciones sin alterar el anclaje del dibujo.
 
 Se instala en `automation/include/kite/ShapeOptimizer.lua`. No añade una macro propia al menú.
 

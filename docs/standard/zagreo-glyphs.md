@@ -1,6 +1,6 @@
 # Zagreo Glyphs
 
-Versión **1.2.3**.
+Versión **1.2.4**.
 
 Zagreo Glyphs convierte texto uniforme o dibujos ASS en contornos animados. Comenta las fuentes e inserta y selecciona los resultados.
 

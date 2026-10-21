@@ -1,8 +1,10 @@
 # UI
 
-Versión **1.5.1** · `kite.UI`
+Versión **1.5.2** · `kite.UI`
 
 Construye diálogos y selectores, conecta preferencias con Settings y publica los catálogos de acciones y favoritos que utiliza Hotkeys.
+
+`actions.rename` migra las identidades de acciones registradas junto con sus atajos y favoritos. Permite cambiar nombres visibles sin perder las asignaciones guardadas.
 
 Se instala en `automation/include/kite/UI.lua`. No añade una macro propia al menú.
 

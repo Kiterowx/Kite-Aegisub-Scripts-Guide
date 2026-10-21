@@ -1,12 +1,12 @@
 # Zheus Colormanager
 
-Versión **4.7.3**.
+Versión **4.7.4**.
 
 Zheus Colormanager gestiona colores por actor, reemplazos, degradados de cuatro esquinas y cambios temporales. También compara paletas y ofrece perfiles de visión del color.
 
 ## Asignar colores por actor
 
-Selecciona las líneas, abre **Colores** y ajusta relleno, borde y sombra. Las páginas de ocho actores conservan sus cambios al navegar.
+Selecciona las líneas, abre **Colores por actor** y ajusta relleno, borde y sombra. Las páginas de ocho actores conservan sus cambios al navegar.
 
 | Aplicar como | Resultado |
 | --- | --- |
@@ -23,7 +23,7 @@ Selecciona las líneas, abre **Colores** y ajusta relleno, borde y sombra. Las p
 
 **Editor de tramos** modifica colores y fronteras por grafema. Permite dividir, unir y cambiar de canal conservando el texto. Protege los canales animados frente a una sustitución estática.
 
-## Programar cambios con ColorRelay
+## Programar cambios con Transiciones de color
 
 1. Selecciona las líneas y escribe los fotogramas de control, por ejemplo `120f, 150f`.
 2. Indica el fundido en milisegundos o fotogramas, como `240ms` o `6f`.
@@ -31,7 +31,7 @@ Selecciona las líneas, abre **Colores** y ajusta relleno, borde y sombra. Las p
 
 El fundido se centra en el control y puede atravesar el corte entre líneas sin reiniciarse. Cero produce un cambio instantáneo. La duración en fotogramas sigue el mapa temporal del vídeo.
 
-ColorRelay necesita colores sólidos uniformes en los canales afectados. Los cambios intermedios, transformaciones previas de color, VSF o fundidos superpuestos requieren preparar las líneas o usar el editor de tramos.
+Transiciones de color necesita colores sólidos uniformes en los canales afectados. Los cambios intermedios, transformaciones previas de color, VSF o fundidos superpuestos requieren preparar las líneas o usar el editor de tramos.
 
 ## Degradados VSF
 
@@ -76,3 +76,5 @@ La puerta se abre.
 <figure class="ui-shot"><img src="../../assets/examples/zheus-colormanager/entrada.png" alt="Color inicial del narrador." loading="lazy"><figcaption>Color inicial del narrador.</figcaption></figure>
 <figure class="ui-shot"><img src="../../assets/examples/zheus-colormanager/salida.png" alt="Relleno #FFC857 con borde #20242C." loading="lazy"><figcaption>Relleno #FFC857 con borde #20242C.</figcaption></figure>
 </div>
+
+Los atajos Colores por actor, Colores de 4 esquinas, Renombrar o fusionar actores y Transiciones de color explican su acción. Los nombres anteriores conservan sus asignaciones al recargar el script.

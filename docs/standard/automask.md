@@ -1,6 +1,6 @@
 # AutoMask
 
-Versión **2.5.5**.
+Versión **2.5.6**.
 
 AutoMask reconstruye una superficie del fotograma actual y la convierte en relleno, dibujo o clip ASS mediante el backend **kite-automask**.
 
@@ -42,11 +42,13 @@ Cada región usa el mismo fotograma. Para una superficie en movimiento, aplica d
 | Shape | Inserta un contorno una capa por encima y conserva la fuente. |
 | `\clip` / `\iclip` | Sustituye el recorte y conserva el texto y las demás etiquetas. |
 
+Los dibujos de Fill y Shape incluyen `\fscx100\fscy100` para mantener sus proporciones aunque el estilo tenga otra escala. Esos valores neutros también se admiten al reutilizar el dibujo como guía.
+
 Los clips son coordenadas absolutas. El editor admite clips inversos; Inside y Classic requieren normales. Convierte los clips animados al estado deseado antes de usarlos. Los dibujos de entrada necesitan geometría estática, `\pos` explícito y `\an7`.
 
 ## Instalar el backend
 
-Configura Python en **Backend/Configure**, ejecuta **Install or Update** y comprueba **Check**. **Install Models** descarga los modelos de SAM y LaMa; los degradados funcionan sin ellos. Consulta la [instalación](../installation.md#backends-de-python).
+El backend actual es **kite-automask 0.4.3**. Configura Python en **Backend/Configure**, ejecuta **Install or Update** y comprueba **Check**. **Install Models** descarga los modelos de SAM y LaMa; los degradados funcionan sin ellos. Consulta la [instalación](../installation.md#backends-de-python).
 
 ## Ejemplo: cubrir las letras de un letrero
 

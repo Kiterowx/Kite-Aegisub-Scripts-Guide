@@ -1,6 +1,6 @@
 # Chrono Suite
 
-Versión **1.5.3**.
+Versión **1.6.1**.
 
 Chrono Suite reúne revisión de tiempos y texto, Auto Timing, importación y utilidades de edición. Abre **Chrono Suite** o usa sus acciones directas bajo `: Kite Hotkeys :/Chrono Suite/`.
 
@@ -54,7 +54,7 @@ Las marcas señalan la pareja que debes revisar al escuchar la escena; no decide
 | Time / Sort | Copiar o desplazar tiempos, encadenar y ordenar. |
 | Karaoke | Convertir palabras de romaji a karaoke `\k`. |
 
-**Remove Honorifics** encierra los sufijos en comentarios `{…}`. **Merge Tags** une bloques contiguos sin quitar comentarios. **Join Lines** conserva el orden de filas del texto y toma el inicio mínimo y el fin máximo.
+**Remove Honorifics** encierra los sufijos en comentarios `{…}`. **Merge Tags** une bloques contiguos sin quitar comentarios. **Line Merge and Cleanup** conserva el orden de filas del texto y toma el inicio mínimo y el fin máximo.
 
 <details markdown="1">
 <summary>Referencia de las utilidades</summary>
@@ -85,7 +85,7 @@ Cada sección tiene un desplegable independiente. Dejarlo vacío omite la secci�
 | Normalize Dashes | Normaliza guiones y rayas. |
 | Trim Trailing Spaces | Elimina espacios finales. |
 | Remove Duplicate Letters | Elimina letras consecutivas repetidas. |
-| Add Stutter / Stutter Manager | Añade tartamudeo / abre su gestor. |
+| Add Stutter / Normalize Stutter | Añade tartamudeo / normaliza iniciales y aplica [TT]. |
 | Add Ah Prefix | Añade «ah» al inicio. |
 
 ### Tags / Comments
@@ -97,9 +97,9 @@ Cada sección tiene un desplegable independiente. Dejarlo vacío omite la secci�
 | Reinsert Tags | Devuelve etiquetas de Effect al texto y cambia punto y coma por coma dentro de los bloques. |
 | Remove Tags | Retira bloques de etiquetas. |
 | Merge Tags | Une bloques de etiquetas adyacentes: `{\an5}{\blur2}` pasa a `{\an5\blur2}`. Conserva comentarios y bloques separados. |
-| Remove Comments | Retira comentarios internos. |
-| Actor Parser | Extrae información del actor del texto. |
-| Swap Comment | Alterna el estado de comentario. |
+| Remove Inline Comments | Retira comentarios internos. |
+| Extract Actors and Split | Extrae información del actor del texto. |
+| Swap Text and Comments | Intercambia texto visible y comentarios internos; conserva los tags. |
 | Delete Comment Lines | Elimina filas comentadas. |
 | Comments to Top / Bottom | Lleva comentarios al inicio / final de la selección. |
 | Effects to Top | Lleva arriba las filas con Effect, conservando su orden relativo. |
@@ -113,18 +113,16 @@ Cada sección tiene un desplegable independiente. Dejarlo vacío omite la secci�
 | Caption Clarifier | Normaliza corchetes e indicaciones. |
 | Complete Sentences | Une una oración incompleta con la siguiente si empieza en minúscula. Los solapes o continuaciones distintas se marcan `[POSSIBLE-JOIN]`. |
 | Erase Blank Lines | Elimina líneas vacías. |
-| Frame Effect | Escribe el fotograma inicial en Effect. |
+| Current Frame to Effect | Añade el fotograma actual del vídeo a Effect. |
 | Copy Fold | Muestra filas ASS del pliegue de la primera línea seleccionada para copiarlas y selecciona ese pliegue. |
 
 ### Split / Join
 
 | Acción | Resultado |
 | --- | --- |
-| Smart Break | Inserta `\N` si el ancho renderizado supera el disponible. |
 | Split by Sentence / Comma | Divide por oración / coma. |
 | Pivot `\N` | Desplaza el salto. |
 | Remove `\N` | Retira los saltos y consolida espacios. |
-| Join Lines | Une textos en orden de filas; abarca inicio mínimo y fin máximo y conserva metadatos de la primera fila. |
 | Join Same Text | Une filas seleccionadas adyacentes con texto idéntico y estilo compatible. |
 | Join Overlaps | Une grupos superpuestos, abarca sus límites y separa textos con `\N`. |
 | Join Overlap Sentences | Une grupos superpuestos como oración en orden de filas; conserva la primera como base y amplía el final. |
@@ -135,13 +133,13 @@ Cada sección tiene un desplegable independiente. Dejarlo vacío omite la secci�
 | Acción | Resultado |
 | --- | --- |
 | Copy Times | Copia tiempos de una línea a otras. |
-| Time Picker | Selecciona por intervalo. |
-| Sort by Length / CPS | Ordena por longitud visible / velocidad de lectura. |
+| Select Time Range | Selecciona por intervalo. |
+| Sort by Text Length / CPS | Ordena por longitud visible / velocidad de lectura. |
 | Sort Odd Even | Ordena según el valor numérico par o impar de Effect. |
 | Count CPS | Muestra CPS promedio. |
 | Import Text | Importa texto externo para sustitución controlada. |
 | Kite Timing | Aplica márgenes adaptables, encadenado y protección de bordes con los valores de Config. |
-| Shift First | Desplaza la selección para alinear la primera línea con el inicio de la segunda. |
+| Align to First Start | Desplaza desde la segunda fila para alinear su inicio al de la primera, conservando las distancias relativas. |
 | Start Snap Back / Forward | Lleva el inicio al fotograma clave anterior / siguiente. |
 | End Snap Back / Forward | Lleva el fin al fotograma clave anterior / siguiente. |
 | Add Lead-In Left / Right | Mueve el inicio atrás / adelante según el paso configurado. Si la anterior está encadenada a hueco cero, mueve también su fin. Con hueco positivo, el desplazamiento hacia atrás se detiene al tocarla. |
@@ -194,4 +192,24 @@ Empieza por Raw voice para revisar la detección. **Search ±** amplía la búsq
 
 **Properties and Cleanup** edita título y créditos. **Clean the whole subtitle file** afecta a todo el archivo: retira rutas, datos extra, eventos comentados y comentarios internos; vacía Actor y Effect y elimina diálogos vacíos. Conserva una copia editable si esos campos contienen trabajo pendiente.
 
-**Text Replacer** sustituye texto conservando etiquetas. **Remover Assistant** retira solo los elementos elegidos. **mpv QC** importa observaciones y sugerencias temporizadas.
+**Text Replacer** sustituye texto conservando etiquetas. **Text and Tag Cleanup** retira solo los elementos elegidos. **mpv QC** importa observaciones y sugerencias temporizadas.
+
+## Unión, división y desplazamiento
+
+**Extra Tools → Line Merge and Cleanup** sustituye a ChronoJoin. Tiene botones directos y una explicación fija:
+
+- **Join:** combina texto visible, conserva los tags iniciales de la primera fila y baja la inicial tras coma o puntos suspensivos.
+- **Keep Second:** exige dos filas y copia el segundo texto completo.
+- **Keep Last:** copia el texto completo de la última fila seleccionada.
+- **No Inner ...:** une y retira los puntos suspensivos internos.
+- **One Phrase:** cambia puntos entre oraciones por comas y baja la inicial siguiente: `Hola. ¿Cómo estás?` → `Hola, ¿cómo estás?`. También acepta una sola fila. Conserva abreviaturas comunes, decimales, siglas y puntos suspensivos; revisa los nombres propios.
+
+Todos conservan los demás campos de la primera fila y abarcan el inicio mínimo y el final máximo. El orden del texto es el orden de filas.
+
+**Smart → Smart Split** sustituye a ChronoSplit. Comparte la lectura de Wave2json con Auto Timing, elige el nivel más fino y respeta el desplazamiento de exportaciones parciales. **Continuo** conserva los extremos y enlaza frases; **Raw** recorta cada frase a la actividad asignada. Los marcadores `[CS-*]` en Effect señalan estimaciones o dudas. Omite dibujos, karaoke y texto con animación temporal. **Smart Break** también está en Smart y equilibra ancho visual y pausas, respetando los saltos existentes.
+
+**Karaoke → Shift Following Lines** sustituye a ChronoK. Desde la fila activa desplaza todas las filas de diálogo posteriores, incluidos comentarios, para dejar **100 ms** antes de la primera. Conserva duraciones y distancias relativas, sigue el orden de la lista y rechaza toda la operación si genera tiempos negativos.
+
+**Import Tags** elige una única fuente por el mayor solapamiento positivo. En empate gana la primera en el texto pegado; las líneas que solo se tocan no coinciden. Reemplaza todos los tags iniciales del destino con el bloque de esa fuente; una fuente ganadora sin tags los elimina. Conserva comentarios, texto y tags internos del destino. Sin solapamiento no modifica nada. No combina fuentes ni acumula tags al repetir la importación.
+
+**Normalize Stutter** normaliza las iniciales repetidas y aplica tartamudeo a las líneas con `[TT]`; es una acción directa.

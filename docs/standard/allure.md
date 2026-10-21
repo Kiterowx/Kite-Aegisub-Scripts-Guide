@@ -1,6 +1,6 @@
 # Allure
 
-Versión **1.2.4**.
+Versión **1.2.5**.
 
 Allure guarda composiciones de carteles y transforma sus capas alrededor de un pivote común. El panel ofrece **Makeup** para la biblioteca y **Posing** para la geometría.
 
@@ -61,3 +61,5 @@ La posición pasa a (760, 320): 120 píxeles a la derecha y 40 hacia arriba. La 
 <figure class="ui-shot"><img src="../../assets/examples/allure/entrada.png" alt="Posición inicial (640, 360)." loading="lazy"><figcaption>Posición inicial (640, 360).</figcaption></figure>
 <figure class="ui-shot"><img src="../../assets/examples/allure/salida.png" alt="Posición final (760, 320), con el mismo recorte de imagen." loading="lazy"><figcaption>Posición final (760, 320), con el mismo recorte de imagen.</figcaption></figure>
 </div>
+
+Al guardar un preset correctamente, confirma el aviso y Allure se cierra. Si falla el guardado o cancelas un reemplazo, el panel permanece abierto.

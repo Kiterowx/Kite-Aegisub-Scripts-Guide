@@ -1,6 +1,6 @@
 # Cliptomaniac
 
-Versión **0.4.4**.
+Versión **0.4.5**.
 
 Cliptomaniac crea, convierte y transforma clips ASS. También usa trazos guía para colocar texto, definir perspectiva y convertir animaciones a fotogramas independientes.
 
@@ -24,6 +24,8 @@ En Autofit y Create clip, **Margin** ajusta el margen y **Style pad** incluye bo
   <img src="../../assets/captures/clipto-options-02-01.png" alt="Autofit combina margen, división por secciones y tolerancia. Transform maxima amplía la medida al intervalo completo de la línea." loading="lazy">
   <figcaption>Autofit combina margen, división por secciones y tolerancia. Transform maxima amplía la medida al intervalo completo de la línea.</figcaption>
 </figure>
+
+Las conversiones a dibujo comparan sus tags con el estilo de destino: omiten valores ya heredados y conservan las anulaciones que cambian el resultado.
 
 ## Convertir y editar contornos
 
